@@ -1,4 +1,5 @@
-import { MapPinIcon } from "lucide-react";
+import { forwardRef, useEffect, useRef } from "react";
+import { MapPinIcon, Bookmark } from "lucide-react";
 import Image from "next/image";
 
 import { Posting } from "@/types/Posting";
@@ -11,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { forwardRef, useEffect, useRef } from "react";
+import { Button } from "../ui/button";
 
 type Props = {
   posting: Posting;
@@ -42,7 +43,17 @@ export const PropertyCard = forwardRef(function PropertyCard(
   return (
     <section className="snap-center" ref={ref}>
       <Card className="rounded-lg overflow-hidden w-[80vw] md:w-[60vw] lg:w-[50vw] relative">
-        <div className="h-6 w-6 bg-blue-500 absolute right-6 top-6"></div>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="w-8 h-8 rounded-full bg-background/50 hover:bg-background/75 focus:outline-none focus:ring-1 focus:ring-primary absolute right-6 top-6 flex items-center justify-center"
+        >
+          <Bookmark
+            className="w-4 h-4"
+            fillOpacity={true ? 1 : 0}
+            fill={"black"}
+          />
+        </Button>
         <CardHeader>
           <div className="xl:grid grid-cols-2 gap-6">
             <div>
