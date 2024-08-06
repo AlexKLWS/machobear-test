@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Machobear } from "@/components/smart/Machobear";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
           workSans.variable
         )}
       >
+        <Machobear />
         {children}
       </body>
     </html>
