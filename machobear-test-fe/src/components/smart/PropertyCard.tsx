@@ -80,14 +80,14 @@ export const PropertyCard = forwardRef(function PropertyCard(
           </CardDescription>
         </CardContent>
         <CardFooter className="block lg:flex items-center justify-between mt-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 h-10">
             <MapPinIcon className="w-5 h-5" />
             <span className="text-sm">{props.posting.address}</span>
           </div>
           <div className="flex items-center gap-2 mt-4 lg:mt-0">
             <Avatar className="w-8 h-8 border">
               <AvatarImage src="/placeholder-user.jpg" alt="@username" />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarFallback>{props.posting.createdBy.name[0]}</AvatarFallback>
             </Avatar>
             <span className="text-sm">{`Hosted by ${props.posting.createdBy.name}`}</span>
           </div>
