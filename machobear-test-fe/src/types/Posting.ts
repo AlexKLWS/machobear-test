@@ -7,5 +7,6 @@ export type Posting = {
   description: string | null;
   address: string;
   imageUrl: string | null;
+  isBookmarked: boolean | null;
   createdBy: User;
 };
