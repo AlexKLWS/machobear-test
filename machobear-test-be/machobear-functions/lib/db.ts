@@ -18,4 +18,5 @@ const dialect = new MysqlDialect({
 // to communicate with your database.
 export const db = new Kysely<any>({
     dialect,
+    log: ['query', 'error'],
 });
