@@ -1,4 +1,5 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { db } from './lib/db';
 
 /**
  *
@@ -12,10 +13,26 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     try {
+        const username = event?.headers?.['username'];
+
+        if (!username || !event?.body) {
+            throw new Error('Username or body missing!');
+        }
+
+        const body = JSON.parse(event.body);
+
+        await db
+            .insertInto('bookmarks')
+            .values({
+                username,
+                posting_id: body.postingId,
+            })
+            .executeTakeFirst();
+
         return {
             statusCode: 200,
             body: JSON.stringify({
-                message: 'hello world',
+                message: 'OK',
             }),
         };
     } catch (err) {
