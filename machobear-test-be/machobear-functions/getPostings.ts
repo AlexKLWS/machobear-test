@@ -19,8 +19,9 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
         console.log('EVENT: \n' + JSON.stringify(event, null, 2));
 
         const username = event?.headers?.['username'];
+        console.log('🚀 ~ file: getPostings.ts ~ line 22 ~ lambdaHandler ~ username', username);
 
-        const query = db
+        let query = db
             .selectFrom('postings')
             .selectAll()
             .select((eb) => {
@@ -33,8 +34,8 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
             });
 
         if (username) {
-            query.select([
-                sql<string>`CASE EXISTS (SELECT 1 FROM bookmarks WHERE bookmarks.posting_id = postings.id AND bookmarks.username = ${username}) THEN True ELSE False END`.as(
+            query = query.select([
+                sql<string>`CASE WHEN EXISTS (SELECT 1 FROM bookmarks WHERE bookmarks.posting_id = postings.id AND bookmarks.username = ${username}) THEN TRUE ELSE FALSE END`.as(
                     'is_bookmarked',
                 ),
             ]);
@@ -48,6 +49,8 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
             p.createdBy = p.createdByUser;
             // @ts-expect-error TODO: add database types
             delete p.createdByUser;
+
+            p.isBookmarked = p.isBookmarked === 1;
             return p;
         });
 
