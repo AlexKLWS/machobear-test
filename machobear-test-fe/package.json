@@ -12,6 +12,9 @@
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@react-three/drei": "^9.109.2",
+    "@react-three/fiber": "^8.16.8",
+    "@types/three": "^0.167.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lodash.debounce": "^4.0.8",
@@ -20,7 +23,8 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "three": "^0.167.1"
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.9",
