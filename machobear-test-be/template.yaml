@@ -57,6 +57,29 @@ Resources:
         EntryPoints:
           - postBookmark.ts
 
+  DeleteBookmarkFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: machobear-functions/
+      Handler: deleteBookmark.lambdaHandler
+      Runtime: nodejs18.x
+      Architectures:
+        - arm64
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /bookmarks
+            Method: delete
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+          - deleteBookmark.ts
+
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -79,3 +102,12 @@ Outputs:
   PostBookmarkFunctionRoleArn:
     Description: "IAM Role ARN for Post Bookmark function"
     Value: !GetAtt PostBookmarkFunctionRole.Arn
+  DeleteBookmarkApiEndpoint:
+    Description: "API Gateway endpoint URL for Prod stage for Delete Bookmark function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/bookmarks/"
+  DeleteBookmarkFunctionArn:
+    Description: "Delete Bookmark Lambda Function ARN"
+    Value: !GetAtt DeleteBookmarkFunction.Arn
+  DeleteBookmarkFunctionRoleArn:
+    Description: "IAM Role ARN for Delete Bookmark function"
+    Value: !GetAtt DeleteBookmarkFunctionRole.Arn
