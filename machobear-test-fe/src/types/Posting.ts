@@ -1,7 +1,7 @@
 import { User } from "./User";
 
 export type Posting = {
-  id: string;
+  id: number;
   title: string;
   price: number;
   description: string | null;

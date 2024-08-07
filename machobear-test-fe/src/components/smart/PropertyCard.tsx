@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Button } from "../ui/button";
+import { BookmarkButton } from "./buttons/BookmarkButton";
 
 type Props = {
   posting: Posting;
@@ -43,17 +43,10 @@ export const PropertyCard = forwardRef(function PropertyCard(
   return (
     <section className="snap-center" ref={ref}>
       <Card className="rounded-lg overflow-hidden w-[80vw] md:w-[60vw] lg:w-[50vw] relative">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="w-8 h-8 rounded-full bg-background/50 hover:bg-background/75 focus:outline-none focus:ring-1 focus:ring-primary absolute right-6 top-6 flex items-center justify-center"
-        >
-          <Bookmark
-            className="w-4 h-4"
-            fillOpacity={true ? 1 : 0}
-            fill={"black"}
-          />
-        </Button>
+        <BookmarkButton
+          isBookmarked={props.posting.isBookmarked}
+          postingId={props.posting.id}
+        />
         <CardHeader>
           <div className="xl:grid grid-cols-2 gap-6">
             <div>
