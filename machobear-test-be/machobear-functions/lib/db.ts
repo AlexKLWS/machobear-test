@@ -6,7 +6,7 @@ const dialect = new MysqlDialect({
         database: 'machobear_test',
         host: 'asana-test-db-1.c964qs46yibj.us-west-2.rds.amazonaws.com',
         user: 'admin',
-        password: 'U7glNyHsUup5iXR3cT02',
+        password: process.env.DB_PASSWORD,
         port: 3306,
         connectionLimit: 10,
     }),
