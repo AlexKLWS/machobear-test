@@ -28,7 +28,7 @@ export default function Component() {
 
   return (
     <div className="py-12 px-4">
-      <Card className="w-[350px] shadow-md border-0 mx-auto">
+      <Card className="w-[350px] mx-auto">
         <CardHeader>
           <CardTitle>Enter your username</CardTitle>
           <CardDescription>
