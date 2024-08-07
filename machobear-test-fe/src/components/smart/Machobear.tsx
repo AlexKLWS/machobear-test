@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import bear_img from "@/assets/images/bearchute-nq8.png";
 
 export const Machobear = () => {
   const [positionOffset, setPositionOffset] = useState({
@@ -22,7 +23,7 @@ export const Machobear = () => {
   return (
     <div className="absolute h-full w-full pointer-events-none">
       <Image
-        src={`/bearchute-nq8.png`}
+        src={bear_img}
         alt={"Bear with a parachute"}
         width="86"
         height="86"
