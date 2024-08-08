@@ -22,6 +22,7 @@ export const BookmarkButton = (props: Props) => {
       variant="ghost"
       size="icon"
       className="w-8 h-8 rounded-full bg-background/50 hover:bg-background/75 focus:outline-none focus:ring-1 focus:ring-primary absolute right-6 top-6 flex items-center justify-center"
+      disabled={isLoading}
       onClick={async () => {
         setIsLoading(true);
         let updated = false;
