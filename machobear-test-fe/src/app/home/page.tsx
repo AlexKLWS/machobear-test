@@ -10,7 +10,7 @@ export default function Component() {
   const username = cookies().get(USERNAME_COOKIE_NAME);
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-[90vh]">
       <div className="pt-8 px-8 flex items-center justify-start w-full z-10">
         <LogOutButton />
         <div className="text-black text-lg ml-8">{`Hi ${username?.value}!`}</div>
